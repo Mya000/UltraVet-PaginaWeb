@@ -35,8 +35,13 @@
 .servicio-body{
     flex:1;
 }
-.btn-cotizar{
-    margin:1rem;
+.cta-box{
+    background: linear-gradient(135deg,var(--uv-orange),var(--uv-orange-dark));
+    padding:2.5rem;
+    border-radius:20px;
+    color:#fff;
+    text-align:center;
+    margin-top:3rem;
 }
 </style>
 
@@ -82,7 +87,6 @@
 <div class="categoria-titulo">Servicios Médicos</div>
 <div class="row g-4">
 
-<!-- 1 -->
 <div class="col-md-4">
 <div class="servicio-card">
 <div class="servicio-top"><div class="servicio-icon"><i class="bi bi-clipboard2-pulse"></i></div></div>
@@ -97,7 +101,6 @@
 </div>
 </div>
 
-<!-- 2 -->
 <div class="col-md-4">
 <div class="servicio-card">
 <div class="servicio-top"><div class="servicio-icon"><i class="bi bi-bandaid"></i></div></div>
@@ -109,13 +112,9 @@
 <div><i class="bi bi-cash-coin text-success"></i> Desde S/60</div>
 </div>
 </div>
-<button class="btn-outline-orange btn-cotizar" data-bs-toggle="modal" data-bs-target="#modalCotizar">
-Cotizar <i class="bi bi-file-earmark-text"></i>
-</button>
 </div>
 </div>
 
-<!-- 3 -->
 <div class="col-md-4">
 <div class="servicio-card">
 <div class="servicio-top"><div class="servicio-icon"><i class="bi bi-droplet-half"></i></div></div>
@@ -136,7 +135,6 @@ Cotizar <i class="bi bi-file-earmark-text"></i>
 <div class="categoria-titulo">Cuidado y Estética</div>
 <div class="row g-4">
 
-<!-- 4 -->
 <div class="col-md-4">
 <div class="servicio-card">
 <div class="servicio-top"><div class="servicio-icon"><i class="bi bi-scissors"></i></div></div>
@@ -151,7 +149,6 @@ Cotizar <i class="bi bi-file-earmark-text"></i>
 </div>
 </div>
 
-<!-- 5 -->
 <div class="col-md-4">
 <div class="servicio-card">
 <div class="servicio-top"><div class="servicio-icon"><i class="bi bi-house-heart"></i></div></div>
@@ -163,13 +160,9 @@ Cotizar <i class="bi bi-file-earmark-text"></i>
 <div><i class="bi bi-cash-coin text-success"></i> Desde S/20</div>
 </div>
 </div>
-<button class="btn-outline-orange btn-cotizar" data-bs-toggle="modal">
-Cotizar
-</button>
 </div>
 </div>
 
-<!-- 6 -->
 <div class="col-md-4">
 <div class="servicio-card">
 <div class="servicio-top"><div class="servicio-icon"><i class="bi bi-moon-stars"></i></div></div>
@@ -181,9 +174,6 @@ Cotizar
 <div><i class="bi bi-cash-coin text-success"></i> Desde S/30</div>
 </div>
 </div>
-<button class="btn-outline-orange btn-cotizar" data-bs-toggle="modal" data-bs-target="#modalCotizar">
-Cotizar
-</button>
 </div>
 </div>
 
@@ -193,7 +183,6 @@ Cotizar
 <div class="categoria-titulo">Prevención y Bienestar</div>
 <div class="row g-4">
 
-<!-- 7 -->
 <div class="col-md-4">
 <div class="servicio-card">
 <div class="servicio-top"><div class="servicio-icon"><i class="bi bi-shield-plus"></i></div></div>
@@ -208,7 +197,6 @@ Cotizar
 </div>
 </div>
 
-<!-- 8 -->
 <div class="col-md-4">
 <div class="servicio-card">
 <div class="servicio-top"><div class="servicio-icon"><i class="bi bi-bug"></i></div></div>
@@ -223,7 +211,6 @@ Cotizar
 </div>
 </div>
 
-<!-- 9 -->
 <div class="col-md-4">
 <div class="servicio-card">
 <div class="servicio-top"><div class="servicio-icon"><i class="bi bi-exclamation-triangle"></i></div></div>
@@ -235,19 +222,25 @@ Cotizar
 <div><i class="bi bi-cash-coin text-success"></i> Según caso</div>
 </div>
 </div>
-<button class="btn-outline-orange btn-cotizar" data-bs-toggle="modal" data-bs-target="#modalCotizar">
-Cotizar
-</button>
 </div>
 </div>
 
+</div>
+
+<!-- CTA FINAL -->
+<div class="cta-box">
+<h3>¿Necesitas información personalizada?</h3>
+<p>Solicita una cotización rápida y te responderemos lo antes posible.</p>
+<button class="btn btn-light mt-2" data-bs-toggle="modal" data-bs-target="#modalCotizar">
+Cotizar servicios <i class="bi bi-file-earmark-text"></i>
+</button>
 </div>
 
 </div>
 </section>
 
 <!-- MODAL -->
-<div class="modal fade" id="modalCotizar" tabindex="-1">
+<div class="modal fade" id="modalCotizar">
 <div class="modal-dialog">
 <div class="modal-content">
 <div class="modal-header">
@@ -258,13 +251,20 @@ Cotizar
 <form>
 <input class="form-control mb-2" placeholder="Nombre">
 <input class="form-control mb-2" placeholder="Correo">
-<textarea class="form-control mb-3" placeholder="Servicio"></textarea>
-<button class="btn-hero w-100">Enviar</button>
+<textarea class="form-control mb-3" placeholder="Servicio que deseas cotizar"></textarea>
+<button class="btn-hero w-100">Enviar solicitud</button>
 </form>
 </div>
 </div>
 </div>
 </div>
+
+<!-- FOOTER -->
+<footer>
+<div class="container text-center">
+<p>© 2026 UltraVet Veterinaria. Todos los derechos reservados.</p>
+</div>
+</footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
