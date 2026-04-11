@@ -27,6 +27,17 @@
     font-size:.85rem;
     margin-top:.6rem;
 }
+.servicio-card{
+    display:flex;
+    flex-direction:column;
+    height:100%;
+}
+.servicio-body{
+    flex:1;
+}
+.btn-cotizar{
+    margin:1rem;
+}
 </style>
 
 </head>
@@ -71,7 +82,7 @@
 <div class="categoria-titulo">Servicios Médicos</div>
 <div class="row g-4">
 
-<!-- Consulta -->
+<!-- 1 -->
 <div class="col-md-4">
 <div class="servicio-card">
 <div class="servicio-top"><div class="servicio-icon"><i class="bi bi-clipboard2-pulse"></i></div></div>
@@ -79,14 +90,14 @@
 <h5>Consulta General</h5>
 <p>Evaluación médica completa.<br>Diagnóstico inicial profesional.</p>
 <div class="info-servicio">
-<div><i class="bi bi-clock-fill me-1" style="color:var(--uv-orange)"></i>30 min</div>
-<div><i class="bi bi-currency-dollar me-1" style="color:var(--uv-orange)"></i>S/ 50</div>
+<div><i class="bi bi-hourglass-split text-warning"></i> 1 hora</div>
+<div><i class="bi bi-cash-coin text-success"></i> S/50</div>
 </div>
 </div>
 </div>
 </div>
 
-<!-- Cirugía -->
+<!-- 2 -->
 <div class="col-md-4">
 <div class="servicio-card">
 <div class="servicio-top"><div class="servicio-icon"><i class="bi bi-bandaid"></i></div></div>
@@ -94,24 +105,26 @@
 <h5>Cirugía</h5>
 <p>Procedimientos especializados.<br>Equipos de alta tecnología.</p>
 <div class="info-servicio">
-<div><i class="bi bi-clock-fill me-1" style="color:var(--uv-orange)"></i>Variable</div>
-<div><i class="bi bi-currency-dollar me-1" style="color:var(--uv-orange)"></i>Desde S/100</div>
+<div><i class="bi bi-hourglass-split text-warning"></i> Variable</div>
+<div><i class="bi bi-cash-coin text-success"></i> Desde S/60</div>
 </div>
-<a href="https://wa.me/51977182608?text=Hola,%20quiero%20cotizar%20cirugía" target="_blank" class="btn-outline-orange">Cotizar <i class="bi bi-whatsapp"></i></a>
 </div>
+<button class="btn-outline-orange btn-cotizar" data-bs-toggle="modal" data-bs-target="#modalCotizar">
+Cotizar <i class="bi bi-file-earmark-text"></i>
+</button>
 </div>
 </div>
 
-<!-- Laboratorio -->
+<!-- 3 -->
 <div class="col-md-4">
 <div class="servicio-card">
 <div class="servicio-top"><div class="servicio-icon"><i class="bi bi-droplet-half"></i></div></div>
 <div class="servicio-body">
 <h5>Laboratorio</h5>
-<p>Análisis clínicos completos.<br>Resultados confiables.</p>
+<p>Análisis clínicos completos.<br>Resultados rápidos y seguros.</p>
 <div class="info-servicio">
-<div><i class="bi bi-clock-fill me-1" style="color:var(--uv-orange)"></i>20 min</div>
-<div><i class="bi bi-currency-dollar me-1" style="color:var(--uv-orange)"></i>Desde S/40</div>
+<div><i class="bi bi-hourglass-split text-warning"></i> 20 min</div>
+<div><i class="bi bi-cash-coin text-success"></i> S/30</div>
 </div>
 </div>
 </div>
@@ -123,6 +136,7 @@
 <div class="categoria-titulo">Cuidado y Estética</div>
 <div class="row g-4">
 
+<!-- 4 -->
 <div class="col-md-4">
 <div class="servicio-card">
 <div class="servicio-top"><div class="servicio-icon"><i class="bi bi-scissors"></i></div></div>
@@ -130,28 +144,32 @@
 <h5>Peluquería</h5>
 <p>Baño y corte profesional.<br>Cuidado estético completo.</p>
 <div class="info-servicio">
-<div><i class="bi bi-clock-fill me-1" style="color:var(--uv-orange)"></i>1 hora</div>
-<div><i class="bi bi-currency-dollar me-1" style="color:var(--uv-orange)"></i>S/40</div>
+<div><i class="bi bi-hourglass-split text-warning"></i> 1 hora</div>
+<div><i class="bi bi-cash-coin text-success"></i> S/50</div>
 </div>
 </div>
 </div>
 </div>
 
+<!-- 5 -->
 <div class="col-md-4">
 <div class="servicio-card">
 <div class="servicio-top"><div class="servicio-icon"><i class="bi bi-house-heart"></i></div></div>
 <div class="servicio-body">
 <h5>Guardería</h5>
-<p>Cuidado seguro por horas.<br>Ambiente supervisado.</p>
+<p>Cuidado seguro por horas.<br>Supervisión constante.</p>
 <div class="info-servicio">
-<div><i class="bi bi-clock-fill me-1" style="color:var(--uv-orange)"></i>Por horas</div>
-<div><i class="bi bi-currency-dollar me-1" style="color:var(--uv-orange)"></i>Desde S/20</div>
+<div><i class="bi bi-hourglass-split text-warning"></i> Por horas</div>
+<div><i class="bi bi-cash-coin text-success"></i> Desde S/20</div>
 </div>
-<a href="https://wa.me/51977182608?text=Hola,%20quiero%20cotizar%20guardería" target="_blank" class="btn-outline-orange">Cotizar</a>
 </div>
+<button class="btn-outline-orange btn-cotizar" data-bs-toggle="modal">
+Cotizar
+</button>
 </div>
 </div>
 
+<!-- 6 -->
 <div class="col-md-4">
 <div class="servicio-card">
 <div class="servicio-top"><div class="servicio-icon"><i class="bi bi-moon-stars"></i></div></div>
@@ -159,11 +177,13 @@
 <h5>Hospedaje</h5>
 <p>Estadía cómoda y segura.<br>Atención continua.</p>
 <div class="info-servicio">
-<div><i class="bi bi-clock-fill me-1" style="color:var(--uv-orange)"></i>Por día</div>
-<div><i class="bi bi-currency-dollar me-1" style="color:var(--uv-orange)"></i>Desde S/35</div>
+<div><i class="bi bi-hourglass-split text-warning"></i> Por día</div>
+<div><i class="bi bi-cash-coin text-success"></i> Desde S/30</div>
 </div>
-<a href="https://wa.me/51977182608?text=Hola,%20quiero%20cotizar%20hospedaje" target="_blank" class="btn-outline-orange">Cotizar</a>
 </div>
+<button class="btn-outline-orange btn-cotizar" data-bs-toggle="modal" data-bs-target="#modalCotizar">
+Cotizar
+</button>
 </div>
 </div>
 
@@ -173,6 +193,7 @@
 <div class="categoria-titulo">Prevención y Bienestar</div>
 <div class="row g-4">
 
+<!-- 7 -->
 <div class="col-md-4">
 <div class="servicio-card">
 <div class="servicio-top"><div class="servicio-icon"><i class="bi bi-shield-plus"></i></div></div>
@@ -180,13 +201,14 @@
 <h5>Vacunación</h5>
 <p>Protección contra enfermedades.<br>Vacunas certificadas.</p>
 <div class="info-servicio">
-<div><i class="bi bi-clock-fill me-1" style="color:var(--uv-orange)"></i>20 min</div>
-<div><i class="bi bi-currency-dollar me-1" style="color:var(--uv-orange)"></i>S/30</div>
+<div><i class="bi bi-hourglass-split text-warning"></i> 20 min</div>
+<div><i class="bi bi-cash-coin text-success"></i> S/35</div>
 </div>
 </div>
 </div>
 </div>
 
+<!-- 8 -->
 <div class="col-md-4">
 <div class="servicio-card">
 <div class="servicio-top"><div class="servicio-icon"><i class="bi bi-bug"></i></div></div>
@@ -194,13 +216,14 @@
 <h5>Desparasitación</h5>
 <p>Eliminación de parásitos.<br>Cuidado preventivo.</p>
 <div class="info-servicio">
-<div><i class="bi bi-clock-fill me-1" style="color:var(--uv-orange)"></i>15 min</div>
-<div><i class="bi bi-currency-dollar me-1" style="color:var(--uv-orange)"></i>S/25</div>
+<div><i class="bi bi-hourglass-split text-warning"></i> 15 min</div>
+<div><i class="bi bi-cash-coin text-success"></i> S/15</div>
 </div>
 </div>
 </div>
 </div>
 
+<!-- 9 -->
 <div class="col-md-4">
 <div class="servicio-card">
 <div class="servicio-top"><div class="servicio-icon"><i class="bi bi-exclamation-triangle"></i></div></div>
@@ -208,32 +231,40 @@
 <h5>Emergencias</h5>
 <p>Atención inmediata 24h.<br>Casos críticos.</p>
 <div class="info-servicio">
-<div><i class="bi bi-clock-fill me-1" style="color:var(--uv-orange)"></i>24h</div>
-<div><i class="bi bi-currency-dollar me-1" style="color:var(--uv-orange)"></i>Según caso</div>
+<div><i class="bi bi-hourglass-split text-warning"></i> 24h</div>
+<div><i class="bi bi-cash-coin text-success"></i> Según caso</div>
 </div>
-<a href="https://wa.me/51977182608?text=Hola,%20quiero%20cotizar%20emergencia" target="_blank" class="btn-outline-orange">Cotizar</a>
 </div>
+<button class="btn-outline-orange btn-cotizar" data-bs-toggle="modal" data-bs-target="#modalCotizar">
+Cotizar
+</button>
 </div>
 </div>
 
-</div>
-
-<!-- BOTÓN FINAL -->
-<div class="text-center mt-5">
-<a href="https://wa.me/51977182608" target="_blank" class="btn-hero">
-Agendar cita <i class="bi bi-whatsapp ms-1"></i>
-</a>
 </div>
 
 </div>
 </section>
 
-<!-- FOOTER -->
-<footer>
-<div class="container text-center">
-<p>© 2026 UltraVet Veterinaria. Todos los derechos reservados.</p>
+<!-- MODAL -->
+<div class="modal fade" id="modalCotizar" tabindex="-1">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<h5>Solicitar cotización</h5>
+<button class="btn-close" data-bs-dismiss="modal"></button>
 </div>
-</footer>
+<div class="modal-body">
+<form>
+<input class="form-control mb-2" placeholder="Nombre">
+<input class="form-control mb-2" placeholder="Correo">
+<textarea class="form-control mb-3" placeholder="Servicio"></textarea>
+<button class="btn-hero w-100">Enviar</button>
+</form>
+</div>
+</div>
+</div>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
