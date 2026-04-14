@@ -224,3 +224,23 @@ footer a:hover { color: var(--uv-orange); padding-left: 4px; }
     #heroCarousel .carousel-item { height: 72vh; }
     section { padding: 3.5rem 0; }
 }
+
+.btn-login-custom{
+    border: 2px solid var(--uv-orange);
+    color: var(--uv-orange-dark);
+    background: transparent;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: .85rem;
+    padding: .45rem 1.3rem;
+    transition: all .25s ease;
+    display: inline-flex;
+    align-items: center;
+}
+
+.btn-login-custom:hover{
+    background: linear-gradient(135deg,var(--uv-orange),var(--uv-orange-dark));
+    color: #fff;
+    box-shadow: 0 6px 18px rgba(239,115,2,.35);
+    transform: translateY(-2px);
+}   

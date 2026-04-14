@@ -1,272 +1,305 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Servicios - UltraVet</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios - UltraVet</title>
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
 
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&family=Poppins:wght@600;700&display=swap"
+        rel="stylesheet">
 
-<link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
 
-<style>
-.categoria-titulo{
-    font-family:'Poppins',sans-serif;
-    font-weight:700;
-    font-size:1.4rem;
-    margin-top:3rem;
-    margin-bottom:1.5rem;
-    color:var(--uv-brown);
-    border-left:5px solid var(--uv-orange);
-    padding-left:12px;
-}
-.info-servicio{
-    font-size:.85rem;
-    margin-top:.6rem;
-}
-.servicio-card{
-    display:flex;
-    flex-direction:column;
-    height:100%;
-}
-.servicio-body{
-    flex:1;
-}
-.cta-box{
-    background: linear-gradient(135deg,var(--uv-orange),var(--uv-orange-dark));
-    padding:2.5rem;
-    border-radius:20px;
-    color:#fff;
-    text-align:center;
-    margin-top:3rem;
-}
-</style>
+    <style>
+        .categoria-titulo {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.4rem;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--uv-brown);
+            border-left: 5px solid var(--uv-orange);
+            padding-left: 12px;
+        }
+
+        .info-servicio {
+            font-size: .85rem;
+            margin-top: .6rem;
+        }
+
+        .servicio-card {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .servicio-body {
+            flex: 1;
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, var(--uv-orange), var(--uv-orange-dark));
+            padding: 2.5rem;
+            border-radius: 20px;
+            color: #fff;
+            text-align: center;
+            margin-top: 3rem;
+        }
+    </style>
 
 </head>
+
 <body>
 
-<!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg sticky-top">
-<div class="container">
-<a class="navbar-brand d-flex align-items-center gap-2 text-decoration-none" href="index.html">
-<div class="brand-logo-wrap"><i class="bi bi-heart-pulse-fill"></i></div>
-<div>
-<div class="brand-name">UltraVet</div>
-<div class="brand-sub">Veterinaria</div>
-</div>
-</a>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2 text-decoration-none" href="index.html">
+                <div class="brand-logo-wrap"><i class="bi bi-heart-pulse-fill"></i></div>
+                <div>
+                    <div class="brand-name">UltraVet</div>
+                    <div class="brand-sub">Veterinaria</div>
+                </div>
+            </a>
 
-<button class="navbar-toggler border-0" data-bs-toggle="collapse" data-bs-target="#navMenu">
-<span class="navbar-toggler-icon"></span>
-</button>
+            <button class="navbar-toggler border-0" data-bs-toggle="collapse" data-bs-target="#navMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-<div class="collapse navbar-collapse" id="navMenu">
-<ul class="navbar-nav ms-auto align-items-lg-center gap-1">
-<li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
-<li class="nav-item"><a class="nav-link active" href="#">Servicios</a></li>
-<li class="nav-item"><a class="nav-link" href="adopcion.html">Adopción</a></li>
-</ul>
-</div>
-</div>
-</nav>
+            <div class="collapse navbar-collapse" id="navMenu">
+                <ul class="navbar-nav ms-auto align-items-lg-center gap-1">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#">Servicios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="adopcion.html">Adopción</a></li>
+                    <li class="nav-item ms-lg-3">
+                        <a class="btn btn-urgencia"
+                            href="https://wa.me/51977182608?text=Hola,%20quiero%20información%20sobre%20sus%20servicios"
+                            target="_blank">
+                            <i class="bi bi-telephone-fill me-1"></i>Contacto
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-<!-- SERVICIOS -->
-<section id="servicios">
-<div class="container text-center mb-5">
-<span class="section-tag">Nuestros Servicios</span>
-<h2 class="section-title mt-2">Servicios pensados para el <span>bienestar</span> de tu mascota</h2>
-<p class="section-lead mt-3">Atención médica, estética y preventiva para mejorar su calidad de vida.</p>
-</div>
+    <!-- SERVICIOS -->
+    <section id="servicios">
+        <div class="container text-center mb-5">
+            <span class="section-tag">Nuestros Servicios</span>
+            <h2 class="section-title mt-2">Servicios pensados para el <span>bienestar</span> de tu mascota</h2>
+            <p class="section-lead mt-3">Atención médica, estética y preventiva para mejorar su calidad de vida.</p>
+        </div>
 
-<div class="container">
+        <div class="container">
 
-<!-- MÉDICOS -->
-<div class="categoria-titulo">Servicios Médicos</div>
-<div class="row g-4">
+            <!-- MÉDICOS -->
+            <div class="categoria-titulo">Servicios Médicos</div>
+            <div class="row g-4">
 
-<div class="col-md-4">
-<div class="servicio-card">
-<div class="servicio-top"><div class="servicio-icon"><i class="bi bi-clipboard2-pulse"></i></div></div>
-<div class="servicio-body">
-<h5>Consulta General</h5>
-<p>Evaluación médica completa.<br>Diagnóstico inicial profesional.</p>
-<div class="info-servicio">
-<div><i class="bi bi-hourglass-split text-warning"></i> 1 hora</div>
-<div><i class="bi bi-cash-coin text-success"></i> S/50</div>
-</div>
-</div>
-</div>
-</div>
+                <div class="col-md-4">
+                    <div class="servicio-card">
+                        <div class="servicio-top">
+                            <div class="servicio-icon"><i class="bi bi-clipboard2-pulse"></i></div>
+                        </div>
+                        <div class="servicio-body">
+                            <h5>Consulta General</h5>
+                            <p>Evaluación médica completa.<br>Diagnóstico inicial profesional.</p>
+                            <div class="info-servicio">
+                                <div><i class="bi bi-hourglass-split text-warning"></i> 1 hora</div>
+                                <div><i class="bi bi-cash-coin text-success"></i> S/50</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-<div class="col-md-4">
-<div class="servicio-card">
-<div class="servicio-top"><div class="servicio-icon"><i class="bi bi-bandaid"></i></div></div>
-<div class="servicio-body">
-<h5>Cirugía</h5>
-<p>Procedimientos especializados.<br>Equipos de alta tecnología.</p>
-<div class="info-servicio">
-<div><i class="bi bi-hourglass-split text-warning"></i> Variable</div>
-<div><i class="bi bi-cash-coin text-success"></i> Desde S/60</div>
-</div>
-</div>
-</div>
-</div>
+                <div class="col-md-4">
+                    <div class="servicio-card">
+                        <div class="servicio-top">
+                            <div class="servicio-icon"><i class="bi bi-bandaid"></i></div>
+                        </div>
+                        <div class="servicio-body">
+                            <h5>Cirugía</h5>
+                            <p>Procedimientos especializados.<br>Equipos de alta tecnología.</p>
+                            <div class="info-servicio">
+                                <div><i class="bi bi-hourglass-split text-warning"></i> Variable</div>
+                                <div><i class="bi bi-cash-coin text-success"></i> Desde S/60</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-<div class="col-md-4">
-<div class="servicio-card">
-<div class="servicio-top"><div class="servicio-icon"><i class="bi bi-droplet-half"></i></div></div>
-<div class="servicio-body">
-<h5>Laboratorio</h5>
-<p>Análisis clínicos completos.<br>Resultados rápidos y seguros.</p>
-<div class="info-servicio">
-<div><i class="bi bi-hourglass-split text-warning"></i> 20 min</div>
-<div><i class="bi bi-cash-coin text-success"></i> S/30</div>
-</div>
-</div>
-</div>
-</div>
+                <div class="col-md-4">
+                    <div class="servicio-card">
+                        <div class="servicio-top">
+                            <div class="servicio-icon"><i class="bi bi-droplet-half"></i></div>
+                        </div>
+                        <div class="servicio-body">
+                            <h5>Laboratorio</h5>
+                            <p>Análisis clínicos completos.<br>Resultados rápidos y seguros.</p>
+                            <div class="info-servicio">
+                                <div><i class="bi bi-hourglass-split text-warning"></i> 20 min</div>
+                                <div><i class="bi bi-cash-coin text-success"></i> S/30</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-</div>
+            </div>
 
-<!-- CUIDADO -->
-<div class="categoria-titulo">Cuidado y Estética</div>
-<div class="row g-4">
+            <!-- CUIDADO -->
+            <div class="categoria-titulo">Cuidado y Estética</div>
+            <div class="row g-4">
 
-<div class="col-md-4">
-<div class="servicio-card">
-<div class="servicio-top"><div class="servicio-icon"><i class="bi bi-scissors"></i></div></div>
-<div class="servicio-body">
-<h5>Peluquería</h5>
-<p>Baño y corte profesional.<br>Cuidado estético completo.</p>
-<div class="info-servicio">
-<div><i class="bi bi-hourglass-split text-warning"></i> 1 hora</div>
-<div><i class="bi bi-cash-coin text-success"></i> S/50</div>
-</div>
-</div>
-</div>
-</div>
+                <div class="col-md-4">
+                    <div class="servicio-card">
+                        <div class="servicio-top">
+                            <div class="servicio-icon"><i class="bi bi-scissors"></i></div>
+                        </div>
+                        <div class="servicio-body">
+                            <h5>Peluquería</h5>
+                            <p>Baño y corte profesional.<br>Cuidado estético completo.</p>
+                            <div class="info-servicio">
+                                <div><i class="bi bi-hourglass-split text-warning"></i> 1 hora</div>
+                                <div><i class="bi bi-cash-coin text-success"></i> S/50</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-<div class="col-md-4">
-<div class="servicio-card">
-<div class="servicio-top"><div class="servicio-icon"><i class="bi bi-house-heart"></i></div></div>
-<div class="servicio-body">
-<h5>Guardería</h5>
-<p>Cuidado seguro por horas.<br>Supervisión constante.</p>
-<div class="info-servicio">
-<div><i class="bi bi-hourglass-split text-warning"></i> Por horas</div>
-<div><i class="bi bi-cash-coin text-success"></i> Desde S/20</div>
-</div>
-</div>
-</div>
-</div>
+                <div class="col-md-4">
+                    <div class="servicio-card">
+                        <div class="servicio-top">
+                            <div class="servicio-icon"><i class="bi bi-house-heart"></i></div>
+                        </div>
+                        <div class="servicio-body">
+                            <h5>Guardería</h5>
+                            <p>Cuidado seguro por horas.<br>Supervisión constante.</p>
+                            <div class="info-servicio">
+                                <div><i class="bi bi-hourglass-split text-warning"></i> Por horas</div>
+                                <div><i class="bi bi-cash-coin text-success"></i> Desde S/20</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-<div class="col-md-4">
-<div class="servicio-card">
-<div class="servicio-top"><div class="servicio-icon"><i class="bi bi-moon-stars"></i></div></div>
-<div class="servicio-body">
-<h5>Hospedaje</h5>
-<p>Estadía cómoda y segura.<br>Atención continua.</p>
-<div class="info-servicio">
-<div><i class="bi bi-hourglass-split text-warning"></i> Por día</div>
-<div><i class="bi bi-cash-coin text-success"></i> Desde S/30</div>
-</div>
-</div>
-</div>
-</div>
+                <div class="col-md-4">
+                    <div class="servicio-card">
+                        <div class="servicio-top">
+                            <div class="servicio-icon"><i class="bi bi-moon-stars"></i></div>
+                        </div>
+                        <div class="servicio-body">
+                            <h5>Hospedaje</h5>
+                            <p>Estadía cómoda y segura.<br>Atención continua.</p>
+                            <div class="info-servicio">
+                                <div><i class="bi bi-hourglass-split text-warning"></i> Por día</div>
+                                <div><i class="bi bi-cash-coin text-success"></i> Desde S/30</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-</div>
+            </div>
 
-<!-- PREVENCIÓN -->
-<div class="categoria-titulo">Prevención y Bienestar</div>
-<div class="row g-4">
+            <!-- PREVENCIÓN -->
+            <div class="categoria-titulo">Prevención y Bienestar</div>
+            <div class="row g-4">
 
-<div class="col-md-4">
-<div class="servicio-card">
-<div class="servicio-top"><div class="servicio-icon"><i class="bi bi-shield-plus"></i></div></div>
-<div class="servicio-body">
-<h5>Vacunación</h5>
-<p>Protección contra enfermedades.<br>Vacunas certificadas.</p>
-<div class="info-servicio">
-<div><i class="bi bi-hourglass-split text-warning"></i> 20 min</div>
-<div><i class="bi bi-cash-coin text-success"></i> S/35</div>
-</div>
-</div>
-</div>
-</div>
+                <div class="col-md-4">
+                    <div class="servicio-card">
+                        <div class="servicio-top">
+                            <div class="servicio-icon"><i class="bi bi-shield-plus"></i></div>
+                        </div>
+                        <div class="servicio-body">
+                            <h5>Vacunación</h5>
+                            <p>Protección contra enfermedades.<br>Vacunas certificadas.</p>
+                            <div class="info-servicio">
+                                <div><i class="bi bi-hourglass-split text-warning"></i> 20 min</div>
+                                <div><i class="bi bi-cash-coin text-success"></i> S/35</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-<div class="col-md-4">
-<div class="servicio-card">
-<div class="servicio-top"><div class="servicio-icon"><i class="bi bi-bug"></i></div></div>
-<div class="servicio-body">
-<h5>Desparasitación</h5>
-<p>Eliminación de parásitos.<br>Cuidado preventivo.</p>
-<div class="info-servicio">
-<div><i class="bi bi-hourglass-split text-warning"></i> 15 min</div>
-<div><i class="bi bi-cash-coin text-success"></i> S/15</div>
-</div>
-</div>
-</div>
-</div>
+                <div class="col-md-4">
+                    <div class="servicio-card">
+                        <div class="servicio-top">
+                            <div class="servicio-icon"><i class="bi bi-bug"></i></div>
+                        </div>
+                        <div class="servicio-body">
+                            <h5>Desparasitación</h5>
+                            <p>Eliminación de parásitos.<br>Cuidado preventivo.</p>
+                            <div class="info-servicio">
+                                <div><i class="bi bi-hourglass-split text-warning"></i> 15 min</div>
+                                <div><i class="bi bi-cash-coin text-success"></i> S/15</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-<div class="col-md-4">
-<div class="servicio-card">
-<div class="servicio-top"><div class="servicio-icon"><i class="bi bi-exclamation-triangle"></i></div></div>
-<div class="servicio-body">
-<h5>Emergencias</h5>
-<p>Atención inmediata 24h.<br>Casos críticos.</p>
-<div class="info-servicio">
-<div><i class="bi bi-hourglass-split text-warning"></i> 24h</div>
-<div><i class="bi bi-cash-coin text-success"></i> Según caso</div>
-</div>
-</div>
-</div>
-</div>
+                <div class="col-md-4">
+                    <div class="servicio-card">
+                        <div class="servicio-top">
+                            <div class="servicio-icon"><i class="bi bi-exclamation-triangle"></i></div>
+                        </div>
+                        <div class="servicio-body">
+                            <h5>Emergencias</h5>
+                            <p>Atención inmediata 24h.<br>Casos críticos.</p>
+                            <div class="info-servicio">
+                                <div><i class="bi bi-hourglass-split text-warning"></i> 24h</div>
+                                <div><i class="bi bi-cash-coin text-success"></i> Según caso</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-</div>
+            </div>
 
-<!-- CTA FINAL -->
-<div class="cta-box">
-<h3>¿Necesitas información personalizada?</h3>
-<p>Solicita una cotización rápida y te responderemos lo antes posible.</p>
-<button class="btn btn-light mt-2" data-bs-toggle="modal" data-bs-target="#modalCotizar">
-Cotizar servicios <i class="bi bi-file-earmark-text"></i>
-</button>
-</div>
+            <!-- CTA FINAL -->
+            <div class="cta-box">
+                <h3>¿Necesitas información personalizada?</h3>
+                <p>Solicita una cotización rápida y te responderemos lo antes posible.</p>
+                <button class="btn btn-light mt-2" data-bs-toggle="modal" data-bs-target="#modalCotizar">
+                    Cotizar servicios <i class="bi bi-file-earmark-text"></i>
+                </button>
+            </div>
 
-</div>
-</section>
+        </div>
+    </section>
 
-<!-- MODAL -->
-<div class="modal fade" id="modalCotizar">
-<div class="modal-dialog">
-<div class="modal-content">
-<div class="modal-header">
-<h5>Solicitar cotización</h5>
-<button class="btn-close" data-bs-dismiss="modal"></button>
-</div>
-<div class="modal-body">
-<form>
-<input class="form-control mb-2" placeholder="Nombre">
-<input class="form-control mb-2" placeholder="Correo">
-<textarea class="form-control mb-3" placeholder="Servicio que deseas cotizar"></textarea>
-<button class="btn-hero w-100">Enviar solicitud</button>
-</form>
-</div>
-</div>
-</div>
-</div>
+    <!-- MODAL -->
+    <div class="modal fade" id="modalCotizar">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5>Solicitar cotización</h5>
+                    <button class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <input class="form-control mb-2" placeholder="Nombre">
+                        <input class="form-control mb-2" placeholder="Correo">
+                        <textarea class="form-control mb-3" placeholder="Servicio que deseas cotizar"></textarea>
+                        <button class="btn-hero w-100">Enviar solicitud</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<!-- FOOTER -->
-<footer>
-<div class="container text-center">
-<p>© 2026 UltraVet Veterinaria. Todos los derechos reservados.</p>
-</div>
-</footer>
+    <!-- FOOTER -->
+    <footer>
+        <div class="container text-center">
+            <p>© 2026 UltraVet Veterinaria. Todos los derechos reservados.</p>
+        </div>
+    </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
