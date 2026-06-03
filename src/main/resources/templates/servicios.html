@@ -233,8 +233,8 @@
 
             <!-- CTA FINAL -->
             <div class="cta-box">
-                <h3>¿Necesitas información personalizada?</h3>
-                <p>Solicita una cotización rápida y te responderemos lo antes posible.</p>
+                <h3>!Queremos consentir a tu mascota!</h3>
+                <p>Cuéntanos qué necesita tu compañero y te enviaremos una cotización detallada y rápida sin ningún compromiso.</p>
                 <button class="btn btn-light mt-2" data-bs-toggle="modal" data-bs-target="#modalCotizar">
                     Cotizar servicios <i class="bi bi-file-earmark-text"></i>
                 </button>
@@ -252,12 +252,103 @@
                     <button class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <form>
-                        <input class="form-control mb-2" placeholder="Nombre">
-                        <input class="form-control mb-2" placeholder="Correo">
-                        <textarea class="form-control mb-3" placeholder="Servicio que deseas cotizar"></textarea>
-                        <button class="btn-hero w-100">Enviar solicitud</button>
-                    </form>
+                    <form id="formCotizacion">
+
+    <div class="mb-3">
+        <label class="form-label fw-semibold">
+            Nombre completo
+        </label>
+        <input type="text"
+               class="form-control"
+               placeholder="Ingrese su nombre completo"
+               required>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label fw-semibold">
+            Correo electrónico
+        </label>
+        <input type="email"
+               class="form-control"
+               placeholder="ejemplo@gmail.com"
+               required>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label fw-semibold">
+            Teléfono
+        </label>
+        <input type="tel"
+               class="form-control"
+               placeholder="999 999 999"
+               required>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label fw-semibold">
+            Servicio requerido
+        </label>
+
+        <select class="form-select" required>
+
+            <option value="">
+                Seleccione un servicio
+            </option>
+
+            <option>
+                Consulta General
+            </option>
+
+            <option>
+                Cirugía
+            </option>
+
+            <option>
+                Laboratorio
+            </option>
+
+            <option>
+                Peluquería
+            </option>
+
+            <option>
+                Guardería
+            </option>
+
+            <option>
+                Hospedaje
+            </option>
+
+            <option>
+                Vacunación
+            </option>
+
+            <option>
+                Desparasitación
+            </option>
+
+            <option>
+                Emergencias
+            </option>
+
+        </select>
+    </div>
+
+    <div class="mb-4">
+        <label class="form-label fw-semibold">
+            Detalles adicionales
+        </label>
+
+        <textarea class="form-control"
+                  rows="4"
+                  placeholder="Describa brevemente lo que necesita"></textarea>
+    </div>
+
+    <button class="btn-hero w-100">
+        Solicitar cotización
+    </button>
+
+</form>
                 </div>
             </div>
         </div>
