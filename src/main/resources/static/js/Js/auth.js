@@ -43,71 +43,31 @@ document.addEventListener("DOMContentLoaded", () => {
 // ===========================
 
 if (!localStorage.getItem("usuarios")) {
-
-    localStorage.setItem(
-        "usuarios",
-        JSON.stringify([])
-    );
-
+    localStorage.setItem("usuarios", JSON.stringify([]));
 }
 
 if (!localStorage.getItem("admins")) {
-
     const admins = [
-
         {
             dni: "12345678",
             pass: "admin123",
             nombre: "Administrador"
         }
-
     ];
-
-    localStorage.setItem(
-        "admins",
-        JSON.stringify(admins)
-    );
-
+    localStorage.setItem("admins", JSON.stringify(admins));
 }
 
 // ===========================
-// PROTEGER PÁGINAS
+// NAVBAR DINÁMICO
 // ===========================
 
 const usuarioActivo =
     localStorage.getItem("usuario") ||
     sessionStorage.getItem("usuario");
 
-const rutaActual = window.location.pathname;
-
-const rutasProtegidas = [
-    "/servicios",
-    "/adopcion"
-];
-
-const rutasAdmin = [
-    "/admin"
-];
-
 const tipoUsuarioActual =
     localStorage.getItem("tipoUsuario") ||
     sessionStorage.getItem("tipoUsuario");
-
-if (
-    rutasAdmin.includes(rutaActual) &&
-    tipoUsuarioActual !== "ADMIN"
-) {
-
-    alert(
-        "Acceso restringido para administradores."
-    );
-
-    window.location.href = "/";
-}
-
-// ===========================
-// NAVBAR DINÁMICO
-// ===========================
 
 const authArea = document.getElementById("authArea");
 
@@ -116,45 +76,26 @@ if (authArea) {
     if (usuarioActivo) {
 
         authArea.innerHTML = `
-
             <div class="d-flex align-items-center gap-3">
-
                 <span class="user-name">
-
-    ${
-        tipoUsuarioActual === "ADMIN"
-        ? "👨‍💼 Admin"
-        : "👤 " + usuarioActivo
-    }
-
-</span>             
-
-                <button
-                    class="btn btn-sm btn-logout"
-                    onclick="logout()">
-
+                    ${tipoUsuarioActual === "ADMIN" ? "👨‍💼 Admin" : "👤 " + usuarioActivo}
+                </span>
+                <button class="btn btn-sm btn-logout" onclick="logout()">
                     <i class="bi bi-box-arrow-right"></i>
-
                 </button>
-
             </div>
-
         `;
 
     } else {
 
         authArea.innerHTML = `
-
             <button
                 class="btn-login-custom"
                 data-bs-toggle="modal"
                 data-bs-target="#authModal">
-
                 <i class="bi bi-person-circle me-1"></i>
                 Iniciar sesión
-
             </button>
-
         `;
 
     }
@@ -169,19 +110,10 @@ function logout() {
 
     localStorage.removeItem("usuario");
     localStorage.removeItem("tipoUsuario");
-
     sessionStorage.removeItem("usuario");
     sessionStorage.removeItem("tipoUsuario");
 
-if (tipoUsuario === "ADMIN") {
-
-    window.location.href = "/admin";
-
-} else {
-
-    location.reload();
-
-}
+    window.location.href = "/";
 
 }
 
@@ -193,26 +125,13 @@ function cambiarTipoAcceso(tipo) {
 
     document.getElementById("tipoAcceso").value = tipo;
 
-    const clienteTab =
-        document.getElementById("clienteTab");
-
-    const adminTab =
-        document.getElementById("adminTab");
-
-    const clienteLogin =
-        document.getElementById("clienteLogin");
-
-    const adminLogin =
-        document.getElementById("adminLogin");
-
-    const recuperar =
-        document.getElementById("recuperarContainer");
-
-    const recordar =
-        document.getElementById("recordarContainer");
-
-    const toggleBtn =
-        document.getElementById("toggleBtn");
+    const clienteTab = document.getElementById("clienteTab");
+    const adminTab = document.getElementById("adminTab");
+    const clienteLogin = document.getElementById("clienteLogin");
+    const adminLogin = document.getElementById("adminLogin");
+    const recuperar = document.getElementById("recuperarContainer");
+    const recordar = document.getElementById("recordarContainer");
+    const toggleBtn = document.getElementById("toggleBtn");
 
     if (tipo === "CLIENTE") {
 
@@ -224,8 +143,10 @@ function cambiarTipoAcceso(tipo) {
 
         recuperar.style.display = "block";
         recordar.style.display = "block";
-
         toggleBtn.style.display = "block";
+
+        // habilita el correo para que el submit funcione
+        document.getElementById("loginCorreo").removeAttribute("disabled");
 
     } else {
 
@@ -237,20 +158,15 @@ function cambiarTipoAcceso(tipo) {
 
         recuperar.style.display = "none";
         recordar.style.display = "none";
-
         toggleBtn.style.display = "none";
 
-        document.getElementById(
-            "registerForm"
-        ).style.display = "none";
+        document.getElementById("registerForm").style.display = "none";
+        document.getElementById("recoverForm").style.display = "none";
+        document.getElementById("loginForm").style.display = "block";
 
-        document.getElementById(
-            "recoverForm"
-        ).style.display = "none";
+        // deshabilita el correo oculto para que no bloquee el submit
+        document.getElementById("loginCorreo").setAttribute("disabled", "true");
 
-        document.getElementById(
-            "loginForm"
-        ).style.display = "block";
     }
 
 }
@@ -260,15 +176,8 @@ function cambiarTipoAcceso(tipo) {
 // ===========================
 
 function togglePassword() {
-
-    const input =
-        document.getElementById("loginPass");
-
-    input.type =
-        input.type === "password"
-            ? "text"
-            : "password";
-
+    const input = document.getElementById("loginPass");
+    input.type = input.type === "password" ? "text" : "password";
 }
 
 // ===========================
@@ -281,25 +190,11 @@ function toggleAuth() {
 
     modoLogin = !modoLogin;
 
-    document.getElementById(
-        "loginForm"
-    ).style.display = modoLogin
-        ? "block"
-        : "none";
+    document.getElementById("loginForm").style.display = modoLogin ? "block" : "none";
+    document.getElementById("registerForm").style.display = modoLogin ? "none" : "block";
+    document.getElementById("recoverForm").style.display = "none";
 
-    document.getElementById(
-        "registerForm"
-    ).style.display = modoLogin
-        ? "none"
-        : "block";
-
-    document.getElementById(
-        "recoverForm"
-    ).style.display = "none";
-
-    document.getElementById(
-        "toggleBtn"
-    ).textContent = modoLogin
+    document.getElementById("toggleBtn").textContent = modoLogin
         ? "¿No tienes cuenta? Regístrate"
         : "¿Ya tienes cuenta? Inicia sesión";
 
@@ -310,151 +205,79 @@ function toggleAuth() {
 // ===========================
 
 function mostrarRecuperarPassword() {
-
-    document.getElementById(
-        "loginForm"
-    ).style.display = "none";
-
-    document.getElementById(
-        "registerForm"
-    ).style.display = "none";
-
-    document.getElementById(
-        "recoverForm"
-    ).style.display = "block";
-
+    document.getElementById("loginForm").style.display = "none";
+    document.getElementById("registerForm").style.display = "none";
+    document.getElementById("recoverForm").style.display = "block";
 }
 
 // ===========================
 // MENSAJES
 // ===========================
 
-function mostrarMensaje(
-    texto,
-    color = "red"
-) {
-
-    const msg =
-        document.getElementById("mensaje");
-
+function mostrarMensaje(texto, color = "red") {
+    const msg = document.getElementById("mensaje");
     msg.style.display = "block";
     msg.style.color = color;
     msg.textContent = texto;
-
 }
 
 // ===========================
 // LOGIN
 // ===========================
 
-document
-.getElementById("loginForm")
-.addEventListener("submit", function (e) {
+document.getElementById("loginForm").addEventListener("submit", function (e) {
 
     e.preventDefault();
 
-    const tipo =
-        document.getElementById("tipoAcceso").value;
-
-    const pass =
-        document.getElementById("loginPass").value;
+    const tipo = document.getElementById("tipoAcceso").value;
+    const pass = document.getElementById("loginPass").value.trim();
 
     if (tipo === "CLIENTE") {
 
-        const correo =
-            document.getElementById("loginCorreo").value;
+        const correo = document.getElementById("loginCorreo").value;
 
-        const usuarios =
-            JSON.parse(
-                localStorage.getItem("usuarios")
-            ) || [];
+        const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
 
-        const usuario =
-            usuarios.find(
-                u =>
-                    u.correo === correo &&
-                    u.pass === pass
-            );
+        const usuario = usuarios.find(u => u.correo === correo && u.pass === pass);
 
         if (!usuario) {
-
-            mostrarMensaje(
-                "Correo o contraseña incorrectos"
-            );
-
+            mostrarMensaje("Correo o contraseña incorrectos");
             return;
         }
 
-        const recordar =
-            document.getElementById(
-                "recordarSesion"
-            ).checked;
+        const recordar = document.getElementById("recordarSesion").checked;
 
         if (recordar) {
-
-            localStorage.setItem(
-                "usuario",
-                usuario.nombre
-            );
-
-            localStorage.setItem(
-                "tipoUsuario",
-                "CLIENTE"
-            );
-
+            localStorage.setItem("usuario", usuario.nombre);
+            localStorage.setItem("tipoUsuario", "CLIENTE");
         } else {
-
-            sessionStorage.setItem(
-                "usuario",
-                usuario.nombre
-            );
-
-            sessionStorage.setItem(
-                "tipoUsuario",
-                "CLIENTE"
-            );
-
+            sessionStorage.setItem("usuario", usuario.nombre);
+            sessionStorage.setItem("tipoUsuario", "CLIENTE");
         }
 
         window.location.href = "/";
 
     } else {
 
-        const dni =
-            document.getElementById("loginDni").value;
+        // ADMIN
+        const dni = document.getElementById("loginDni").value.trim();
 
-        const admins =
-            JSON.parse(
-                localStorage.getItem("admins")
-            ) || [];
+        const admins = JSON.parse(localStorage.getItem("admins")) || [];
 
-        const admin =
-            admins.find(
-                a =>
-                    a.dni === dni &&
-                    a.pass === pass
-            );
+        const admin = admins.find(a =>
+            String(a.dni).trim() === dni &&
+            String(a.pass).trim() === pass
+        );
 
         if (!admin) {
-
-            mostrarMensaje(
-                "DNI o contraseña incorrectos"
-            );
-
+            mostrarMensaje("DNI o contraseña incorrectos");
             return;
         }
 
-        localStorage.setItem(
-            "usuario",
-            admin.nombre
-        );
+        localStorage.setItem("usuario", admin.nombre);
+        localStorage.setItem("tipoUsuario", "ADMIN");
 
-        localStorage.setItem(
-            "tipoUsuario",
-            "ADMIN"
-        );
-
-        window.location.href = "/admin";
+        window.location.replace("/admin");
 
     }
 
@@ -464,74 +287,35 @@ document
 // REGISTRO CLIENTE
 // ===========================
 
-document
-.getElementById("registerForm")
-.addEventListener("submit", function (e) {
+document.getElementById("registerForm").addEventListener("submit", function (e) {
 
     e.preventDefault();
 
-    const nombre =
-        document.getElementById("regNombre").value;
-
-    const correo =
-        document.getElementById("regCorreo").value;
-
-    const telefono =
-        document.getElementById("regTelefono").value;
-
-    const pass =
-        document.getElementById("regPass").value;
-
-    const pass2 =
-        document.getElementById("regPass2").value;
+    const nombre = document.getElementById("regNombre").value;
+    const correo = document.getElementById("regCorreo").value;
+    const telefono = document.getElementById("regTelefono").value;
+    const pass = document.getElementById("regPass").value;
+    const pass2 = document.getElementById("regPass2").value;
 
     if (pass !== pass2) {
-
-        mostrarMensaje(
-            "Las contraseñas no coinciden"
-        );
-
+        mostrarMensaje("Las contraseñas no coinciden");
         return;
     }
 
-    let usuarios =
-        JSON.parse(
-            localStorage.getItem("usuarios")
-        ) || [];
+    let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
 
-    const existe =
-        usuarios.find(
-            u => u.correo === correo
-        );
+    const existe = usuarios.find(u => u.correo === correo);
 
     if (existe) {
-
-        mostrarMensaje(
-            "Ya existe una cuenta con ese correo"
-        );
-
+        mostrarMensaje("Ya existe una cuenta con ese correo");
         return;
     }
 
-    usuarios.push({
+    usuarios.push({ nombre, correo, telefono, pass, tipo: "CLIENTE" });
 
-        nombre,
-        correo,
-        telefono,
-        pass,
-        tipo: "CLIENTE"
+    localStorage.setItem("usuarios", JSON.stringify(usuarios));
 
-    });
-
-    localStorage.setItem(
-        "usuarios",
-        JSON.stringify(usuarios)
-    );
-
-    mostrarMensaje(
-        "Cuenta creada correctamente",
-        "green"
-    );
+    mostrarMensaje("Cuenta creada correctamente", "green");
 
     toggleAuth();
 
@@ -541,39 +325,21 @@ document
 // RECUPERAR PASSWORD
 // ===========================
 
-document
-.getElementById("recoverForm")
-.addEventListener("submit", function (e) {
+document.getElementById("recoverForm").addEventListener("submit", function (e) {
 
     e.preventDefault();
 
-    const correo =
-        document.getElementById(
-            "recoverCorreo"
-        ).value;
+    const correo = document.getElementById("recoverCorreo").value;
 
-    const usuarios =
-        JSON.parse(
-            localStorage.getItem("usuarios")
-        ) || [];
+    const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
 
-    const usuario =
-        usuarios.find(
-            u => u.correo === correo
-        );
+    const usuario = usuarios.find(u => u.correo === correo);
 
     if (!usuario) {
-
-        mostrarMensaje(
-            "No existe una cuenta con ese correo"
-        );
-
+        mostrarMensaje("No existe una cuenta con ese correo");
         return;
     }
 
-    mostrarMensaje(
-        "Tu contraseña es: " + usuario.pass,
-        "green"
-    );
+    mostrarMensaje("Tu contraseña es: " + usuario.pass, "green");
 
 });
