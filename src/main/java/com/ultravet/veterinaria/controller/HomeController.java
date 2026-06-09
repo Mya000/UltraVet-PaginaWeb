@@ -15,9 +15,4 @@ public class HomeController {
     public String servicios() {
         return "servicios";
     }
-
-    @GetMapping("/adopcion")
-    public String adopcion() {
-        return "adopcion";
-    }
 }

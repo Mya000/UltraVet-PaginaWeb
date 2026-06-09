@@ -1,46 +1,144 @@
 package com.ultravet.veterinaria.controller;
 
+import com.ultravet.veterinaria.dto.SolicitudAdopcionForm;
+import com.ultravet.veterinaria.model.EstadoSolicitud;
+import com.ultravet.veterinaria.model.Mascota;
+import com.ultravet.veterinaria.model.Rol;
 import com.ultravet.veterinaria.model.SolicitudAdopcion;
+import com.ultravet.veterinaria.model.Usuario;
+import com.ultravet.veterinaria.repository.EstadoSolicitudRepository;
+import com.ultravet.veterinaria.repository.MascotaRepository;
+import com.ultravet.veterinaria.repository.RolRepository;
 import com.ultravet.veterinaria.repository.SolicitudAdopcionRepository;
+import com.ultravet.veterinaria.repository.UsuarioRepository;
 import jakarta.validation.Valid;
+import java.time.LocalDateTime;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class AdopcionController {
 
-    private final SolicitudAdopcionRepository adopcionRepository;
+    private static final String ROL_CLIENTE = "CLIENTE";
+    private static final String ESTADO_SOLICITUD_PENDIENTE = "PENDIENTE";
 
-    // Inyección de dependencias por constructor para asegurar el desacoplamiento
-    public AdopcionController(SolicitudAdopcionRepository adopcionRepository) {
+    private final SolicitudAdopcionRepository adopcionRepository;
+    private final UsuarioRepository usuarioRepository;
+    private final MascotaRepository mascotaRepository;
+    private final RolRepository rolRepository;
+    private final EstadoSolicitudRepository estadoSolicitudRepository;
+
+    public AdopcionController(SolicitudAdopcionRepository adopcionRepository,
+            UsuarioRepository usuarioRepository,
+            MascotaRepository mascotaRepository,
+            RolRepository rolRepository,
+            EstadoSolicitudRepository estadoSolicitudRepository) {
         this.adopcionRepository = adopcionRepository;
+        this.usuarioRepository = usuarioRepository;
+        this.mascotaRepository = mascotaRepository;
+        this.rolRepository = rolRepository;
+        this.estadoSolicitudRepository = estadoSolicitudRepository;
+    }
+
+    @GetMapping("/adopcion")
+    public String adopcion(Model model) {
+        prepararVistaAdopcion(model);
+        return "adopcion";
     }
 
     @PostMapping("/adoptar")
-    public String adoptar(@Valid @ModelAttribute("solicitud") SolicitudAdopcion solicitud,
+    @Transactional
+    public String adoptar(@Valid @ModelAttribute("solicitud") SolicitudAdopcionForm solicitudForm,
             BindingResult result,
             Model model) {
 
-        // Interceptación lógica de errores mediante el escudo de Spring Validation
+        prepararVistaAdopcion(model);
+
         if (result.hasErrors()) {
-            // Si hay campos inválidos, detenemos el guardado y recargamos la vista HTML
+            model.addAttribute("mensajeError", "Revisa los datos ingresados e intenta nuevamente.");
             return "adopcion";
         }
 
-        // Si los datos son íntegros, invocamos la persistencia real en MySQL
+        Mascota mascota = mascotaRepository.findByIdAndActivoTrue(solicitudForm.getMascotaId())
+                .orElse(null);
+
+        if (mascota == null) {
+            model.addAttribute("mensajeError", "La mascota seleccionada no existe o no esta activa.");
+            return "adopcion";
+        }
+
+        Usuario usuario = obtenerOCrearUsuario(solicitudForm);
+
+        if (adopcionRepository.existsByUsuarioAndMascota(usuario, mascota)) {
+            model.addAttribute("mensajeError",
+                    "Ya existe una solicitud de adopcion para " + mascota.getNombre() + " con este correo.");
+            return "adopcion";
+        }
+
+        EstadoSolicitud estadoPendiente = estadoSolicitudRepository.findByNombre(ESTADO_SOLICITUD_PENDIENTE)
+                .orElseThrow(() -> new IllegalStateException("No existe el estado de solicitud PENDIENTE."));
+
+        SolicitudAdopcion solicitud = new SolicitudAdopcion();
+        solicitud.setUsuario(usuario);
+        solicitud.setMascota(mascota);
+        solicitud.setEstado(estadoPendiente);
+        solicitud.setDistrito(limpiarTexto(solicitudForm.getDistrito()));
+        solicitud.setExperienciaMascotas(limpiarTexto(solicitudForm.getExperienciaMascotas()));
+        solicitud.setFechaEnvio(LocalDateTime.now());
+
         adopcionRepository.save(solicitud);
 
-        // Inyección de mensaje de éxito para la confirmación visual en el cliente
         model.addAttribute("mensajeExito",
-                "Solicitud enviada correctamente para adoptar a " + solicitud.getMascota());
-
-        // Limpiamos el formulario enviando un objeto nuevo vacío para la siguiente
-        // interacción
-        model.addAttribute("solicitud", new SolicitudAdopcion());
+                "Solicitud enviada correctamente para adoptar a " + mascota.getNombre());
+        model.addAttribute("solicitud", new SolicitudAdopcionForm());
 
         return "adopcion";
+    }
+
+    private void prepararVistaAdopcion(Model model) {
+        model.addAttribute("mascotas", mascotaRepository.findByActivoTrueOrderByIdAsc());
+
+        if (!model.containsAttribute("solicitud")) {
+            model.addAttribute("solicitud", new SolicitudAdopcionForm());
+        }
+    }
+
+    private Usuario obtenerOCrearUsuario(SolicitudAdopcionForm form) {
+        return usuarioRepository.findByCorreo(form.getCorreo().trim().toLowerCase())
+                .map(usuario -> actualizarDatosBasicos(usuario, form))
+                .orElseGet(() -> crearUsuarioCliente(form));
+    }
+
+    private Usuario actualizarDatosBasicos(Usuario usuario, SolicitudAdopcionForm form) {
+        usuario.setNombre(form.getNombre().trim());
+        usuario.setTelefono(form.getTelefono().trim());
+        return usuarioRepository.save(usuario);
+    }
+
+    private Usuario crearUsuarioCliente(SolicitudAdopcionForm form) {
+        Rol rolCliente = rolRepository.findByNombre(ROL_CLIENTE)
+                .orElseThrow(() -> new IllegalStateException("No existe el rol CLIENTE."));
+
+        Usuario usuario = new Usuario();
+        usuario.setRol(rolCliente);
+        usuario.setNombre(form.getNombre().trim());
+        usuario.setCorreo(form.getCorreo().trim().toLowerCase());
+        usuario.setTelefono(form.getTelefono().trim());
+        usuario.setActivo(true);
+
+        return usuarioRepository.save(usuario);
+    }
+
+    private String limpiarTexto(String valor) {
+        if (valor == null || valor.isBlank()) {
+            return null;
+        }
+
+        return valor.trim();
     }
 }

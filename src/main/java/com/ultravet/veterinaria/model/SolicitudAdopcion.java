@@ -1,41 +1,49 @@
 package com.ultravet.veterinaria.model;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
+import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "solicitudes_adopcion")
-public class SolicitudAdopcion {
+@Table(name = "solicitudes_adopcion", uniqueConstraints = {
+        @UniqueConstraint(name = "uk_solicitudes_usuario_mascota", columnNames = { "usuario_id", "mascota_id" })
+})
+public class SolicitudAdopcion extends AuditableEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "El nombre es obligatorio")
-    @Size(min = 3, max = 50, message = "El nombre debe tener entre 3 y 50 caracteres")
-    @Column(nullable = false, length = 50)
-    private String nombre;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "usuario_id", nullable = false, foreignKey = @ForeignKey(name = "fk_solicitudes_usuarios"))
+    private Usuario usuario;
 
-    @NotBlank(message = "El correo electrónico es obligatorio")
-    @Email(message = "Debe ingresar un formato de correo electrónico válido")
-    @Column(nullable = false, length = 100)
-    private String correo;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "mascota_id", nullable = false, foreignKey = @ForeignKey(name = "fk_solicitudes_mascotas"))
+    private Mascota mascota;
 
-    @NotBlank(message = "El teléfono de contacto es obligatorio")
-    @Pattern(regexp = "^[0-9]{9,15}$", message = "El teléfono debe contener entre 9 y 15 dígitos numéricos")
-    @Column(nullable = false, length = 15)
-    private String telefono;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "estado_id", nullable = false, foreignKey = @ForeignKey(name = "fk_solicitudes_estados"))
+    private EstadoSolicitud estado;
 
-    @NotBlank(message = "Debe especificar la mascota que desea adoptar")
-    @Column(nullable = false, length = 50)
-    private String mascota;
+    @Column(length = 120)
+    private String distrito;
 
-    // Constructor vacío obligatorio para que JPA pueda instanciar las filas de la
-    // BD
-    public SolicitudAdopcion() {
-    }
+    @Column(name = "experiencia_mascotas", length = 80)
+    private String experienciaMascotas;
 
-    // Getters y Setters
+    @Column(name = "fecha_envio", nullable = false)
+    private LocalDateTime fechaEnvio;
+
     public Long getId() {
         return id;
     }
@@ -44,35 +52,51 @@ public class SolicitudAdopcion {
         this.id = id;
     }
 
-    public String getNombre() {
-        return nombre;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
-    public String getCorreo() {
-        return correo;
-    }
-
-    public void setCorreo(String correo) {
-        this.correo = correo;
-    }
-
-    public String getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
-
-    public String getMascota() {
+    public Mascota getMascota() {
         return mascota;
     }
 
-    public void setMascota(String mascota) {
+    public void setMascota(Mascota mascota) {
         this.mascota = mascota;
+    }
+
+    public EstadoSolicitud getEstado() {
+        return estado;
+    }
+
+    public void setEstado(EstadoSolicitud estado) {
+        this.estado = estado;
+    }
+
+    public String getDistrito() {
+        return distrito;
+    }
+
+    public void setDistrito(String distrito) {
+        this.distrito = distrito;
+    }
+
+    public String getExperienciaMascotas() {
+        return experienciaMascotas;
+    }
+
+    public void setExperienciaMascotas(String experienciaMascotas) {
+        this.experienciaMascotas = experienciaMascotas;
+    }
+
+    public LocalDateTime getFechaEnvio() {
+        return fechaEnvio;
+    }
+
+    public void setFechaEnvio(LocalDateTime fechaEnvio) {
+        this.fechaEnvio = fechaEnvio;
     }
 }
