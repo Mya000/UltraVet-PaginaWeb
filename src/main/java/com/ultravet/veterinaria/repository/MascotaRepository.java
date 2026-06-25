@@ -15,6 +15,9 @@ public interface MascotaRepository extends JpaRepository<Mascota, Long> {
     List<Mascota> findByActivoTrueOrderByIdAsc();
 
     @EntityGraph(attributePaths = { "estado", "prioridad" })
+    List<Mascota> findByActivoTrueAndEstadoNombreInOrderByIdAsc(List<String> nombres);
+
+    @EntityGraph(attributePaths = { "estado", "prioridad" })
     Optional<Mascota> findByIdAndActivoTrue(Long id);
 
     Optional<Mascota> findFirstByUsuarioAndNombreIgnoreCaseAndActivoTrue(Usuario usuario, String nombre);
