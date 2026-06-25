@@ -143,7 +143,7 @@
             z-index: 5;
             background: #fff;
             border-bottom: 1px solid #ececec;
-            padding: 1rem 2rem;
+            padding: .7rem 1.4rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -175,88 +175,96 @@
         }
 
         .page-body {
-            padding: 2rem;
+            padding: 1.1rem 1.4rem;
         }
 
         .section-block {
             scroll-margin-top: 90px;
-            margin-bottom: 1.5rem;
+            margin-bottom: .85rem;
         }
 
         .page-title {
-            font-size: 1.48rem;
+            font-size: 1.18rem;
             font-weight: 900;
-            margin-bottom: 1.25rem;
+            margin-bottom: .7rem;
         }
 
         .section-box {
             background: #fff;
-            border-radius: 12px;
-            padding: 1.35rem;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, .05);
+            border-radius: 10px;
+            padding: .8rem .95rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, .04);
             border: 1px solid #f0f0f0;
         }
 
         .section-title {
-            font-size: .98rem;
+            font-size: .88rem;
             font-weight: 900;
-            margin-bottom: .95rem;
+            margin-bottom: .5rem;
         }
 
+        /* Stat cards: ícono + texto en fila, sin altura fija */
         .stat-card {
-            min-height: 132px;
             background: #fff;
-            border-radius: 12px;
-            padding: 1.25rem;
+            border-radius: 10px;
+            padding: .75rem .9rem;
             border: 1px solid #f0f0f0;
             border-left: 4px solid var(--uv-orange);
-            box-shadow: 0 2px 12px rgba(0, 0, 0, .05);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, .04);
+            display: flex;
+            align-items: center;
+            gap: .75rem;
         }
 
         .stat-icon {
-            width: 40px;
-            height: 40px;
+            width: 34px;
+            height: 34px;
+            flex-shrink: 0;
             display: grid;
             place-items: center;
-            border-radius: 10px;
+            border-radius: 8px;
             color: var(--uv-orange-dark);
             background: rgba(246, 147, 30, .12);
-            margin-bottom: .72rem;
+            font-size: .95rem;
         }
 
+        .stat-body { min-width: 0; }
+
         .stat-num {
-            font-size: 1.9rem;
+            font-size: 1.45rem;
             font-weight: 900;
             line-height: 1;
         }
 
         .stat-label {
-            margin-top: .35rem;
+            margin-top: .15rem;
             color: var(--uv-gray);
-            font-size: .74rem;
+            font-size: .65rem;
             font-weight: 800;
-            letter-spacing: .35px;
+            letter-spacing: .3px;
             text-transform: uppercase;
         }
 
         .table {
-            font-size: .84rem;
+            font-size: .81rem;
             margin-bottom: 0;
         }
 
         .table thead th {
             color: var(--uv-gray);
-            font-size: .72rem;
+            font-size: .68rem;
             font-weight: 900;
             text-transform: uppercase;
-            letter-spacing: .45px;
+            letter-spacing: .35px;
             border-bottom: 2px solid #f0f0f0;
             white-space: nowrap;
+            padding: .38rem .55rem;
         }
 
         .table tbody td {
             vertical-align: middle;
             border-bottom: 1px solid #f7f7f7;
+            padding: .38rem .55rem;
         }
 
         .table tbody tr:hover {
@@ -267,8 +275,8 @@
             display: inline-flex;
             align-items: center;
             border-radius: 999px;
-            padding: .32rem .72rem;
-            font-size: .71rem;
+            padding: .22rem .58rem;
+            font-size: .69rem;
             font-weight: 900;
             white-space: nowrap;
         }
@@ -302,15 +310,15 @@
         }
 
         .empty-state {
-            padding: 1.6rem 1rem;
+            padding: .8rem .5rem;
             text-align: center;
             color: var(--uv-gray);
-            font-size: .85rem;
+            font-size: .82rem;
             font-weight: 700;
         }
 
         .search-input {
-            max-width: 280px;
+            max-width: 230px;
             border-radius: 10px;
             border: 2px solid #ececec;
             font-size: .84rem;
@@ -343,6 +351,29 @@
             color: var(--uv-gray);
             text-transform: uppercase;
             letter-spacing: .35px;
+        }
+
+        /* Botón naranja UltraVet para acciones de nuevo */
+        .btn-uv-new {
+            background: linear-gradient(135deg, var(--uv-orange), var(--uv-orange-dark));
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: .38rem .85rem;
+            font-size: .78rem;
+            font-weight: 800;
+            display: inline-flex;
+            align-items: center;
+            gap: .35rem;
+            cursor: pointer;
+            transition: box-shadow .2s, transform .2s;
+            white-space: nowrap;
+        }
+
+        .btn-uv-new:hover {
+            color: #fff;
+            box-shadow: 0 4px 14px rgba(246, 147, 30, .4);
+            transform: translateY(-1px);
         }
 
         @media (max-width: 900px) {
@@ -389,9 +420,9 @@
             <a class="nav-admin" href="#adopciones"><i class="bi bi-heart-fill"></i> Adopciones</a>
             <a class="nav-admin" href="#mascotas"><i class="bi bi-emoji-smile-fill"></i> Mascotas</a>
             <a class="nav-admin" href="#servicios-admin"><i class="bi bi-scissors"></i> Servicios</a>
-            <a class="nav-admin" href="#clientes"><i class="bi bi-people-fill"></i> Clientes</a>
+            <a class="nav-admin" href="#clientes"><i class="bi bi-people-fill"></i> Usuarios</a>
             <a class="nav-admin" href="#pagos"><i class="bi bi-credit-card-2-front-fill"></i> Pagos</a>
-            <a class="nav-admin" href="#atenciones"><i class="bi bi-file-medical-fill"></i> Atenciones</a>
+            <a class="nav-admin" href="#atenciones"><i class="bi bi-file-medical-fill"></i> Historial M&#233;dico</a>
 
             <div class="sidebar-footer">
                 <a class="logout-link" th:href="@{/logout}">
@@ -405,56 +436,65 @@
                 <div class="topbar-title">Panel Administrativo UltraVet</div>
                 <div class="topbar-user">
                     <div class="avatar"><i class="bi bi-person-fill"></i></div>
-                    <span th:text="${session.usuarioNombre ?: 'Administrador'}">Administrador</span>
+                    <span th:text="${session.usuarioNombre ?: 'Administrador'}"></span>
                 </div>
             </div>
 
             <div class="page-body">
                 <div th:if="${adminSuccess}" class="alert alert-success alert-dismissible fade show" role="alert">
-                    <span th:text="${adminSuccess}">Operacion realizada correctamente.</span>
+                    <span th:text="${adminSuccess}"></span>
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
                 </div>
 
                 <div th:if="${adminError}" class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <span th:text="${adminError}">No se pudo completar la operacion.</span>
+                    <span th:text="${adminError}"></span>
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
                 </div>
 
+                <!-- ═══════════ INICIO ═══════════ -->
                 <section class="section-block" id="inicio">
                     <div class="page-title">Resumen general</div>
 
-                    <div class="row g-3 mb-4">
+                    <div class="row g-2 mb-3">
                         <div class="col-6 col-xl-3">
                             <div class="stat-card">
                                 <div class="stat-icon"><i class="bi bi-calendar-check"></i></div>
-                                <div class="stat-num" th:text="${totalCitas}">0</div>
-                                <div class="stat-label">Citas registradas</div>
+                                <div class="stat-body">
+                                    <div class="stat-num" th:text="${totalCitas}"></div>
+                                    <div class="stat-label">Citas registradas</div>
+                                </div>
                             </div>
                         </div>
                         <div class="col-6 col-xl-3">
                             <div class="stat-card">
                                 <div class="stat-icon"><i class="bi bi-heart"></i></div>
-                                <div class="stat-num" th:text="${totalSolicitudes}">0</div>
-                                <div class="stat-label">Solicitudes adopcion</div>
+                                <div class="stat-body">
+                                    <div class="stat-num" th:text="${totalSolicitudes}"></div>
+                                    <div class="stat-label">Solicitudes adopcion</div>
+                                </div>
                             </div>
                         </div>
                         <div class="col-6 col-xl-3">
                             <div class="stat-card">
                                 <div class="stat-icon"><i class="bi bi-people"></i></div>
-                                <div class="stat-num" th:text="${totalClientes}">0</div>
-                                <div class="stat-label">Clientes activos</div>
+                                <div class="stat-body">
+                                    <div class="stat-num" th:text="${totalClientes}"></div>
+                                    <div class="stat-label">Clientes activos</div>
+                                </div>
                             </div>
                         </div>
                         <div class="col-6 col-xl-3">
                             <div class="stat-card">
                                 <div class="stat-icon"><i class="bi bi-cash-coin"></i></div>
-                                <div class="stat-num" th:text="${'S/ ' + totalPagado}">S/ 0.00</div>
-                                <div class="stat-label">Total pagos</div>
+                                <div class="stat-body">
+                                    <div class="stat-num" th:text="${'S/ ' + totalPagado}"></div>
+                                    <div class="stat-label">Total pagos</div>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="row g-3">
+                    <div class="row g-2">
                         <div class="col-xl-4">
                             <div class="section-box h-100">
                                 <div class="section-title">Ultimas citas</div>
@@ -472,12 +512,12 @@
                                         </thead>
                                         <tbody>
                                             <tr th:each="cita : ${ultimasCitas}">
-                                                <td th:text="${cita.usuario.nombre}">Cliente</td>
-                                                <td th:text="${cita.servicio.nombre}">Servicio</td>
+                                                <td th:text="${cita.usuario.nombre}"></td>
+                                                <td th:text="${cita.servicio.nombre}"></td>
                                                 <td>
                                                     <span class="badge-estado"
                                                         th:classappend="${' estado-' + #strings.toLowerCase(cita.estado.nombre)}"
-                                                        th:text="${cita.estado.nombre}">PENDIENTE</span>
+                                                        th:text="${cita.estado.nombre}"></span>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -503,12 +543,12 @@
                                         </thead>
                                         <tbody>
                                             <tr th:each="solicitud : ${ultimasSolicitudes}">
-                                                <td th:text="${solicitud.usuario.nombre}">Usuario</td>
-                                                <td th:text="${solicitud.mascota.nombre}">Mascota</td>
+                                                <td th:text="${solicitud.usuario.nombre}"></td>
+                                                <td th:text="${solicitud.mascota.nombre}"></td>
                                                 <td>
                                                     <span class="badge-estado"
                                                         th:classappend="${' estado-' + #strings.toLowerCase(solicitud.estado.nombre)}"
-                                                        th:text="${solicitud.estado.nombre}">PENDIENTE</span>
+                                                        th:text="${solicitud.estado.nombre}"></span>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -520,48 +560,48 @@
                         <div class="col-xl-4">
                             <div class="section-box h-100">
                                 <div class="section-title">Indicadores</div>
-                                <div class="row g-3">
-                                    <div class="col-6">
-                                        <div class="fw-bold fs-4" th:text="${citasPendientes}">0</div>
-                                        <div class="muted small fw-bold">Citas pendientes</div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="fw-bold fs-4" th:text="${solicitudesPendientes}">0</div>
-                                        <div class="muted small fw-bold">Adopciones pendientes</div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="fw-bold fs-4" th:text="${totalMascotas}">0</div>
-                                        <div class="muted small fw-bold">Mascotas</div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="fw-bold fs-4" th:text="${totalServicios}">0</div>
-                                        <div class="muted small fw-bold">Servicios</div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="fw-bold fs-4" th:text="${totalPagos}">0</div>
-                                        <div class="muted small fw-bold">Pagos</div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="fw-bold fs-4" th:text="${totalAtenciones}">0</div>
-                                        <div class="muted small fw-bold">Atenciones</div>
-                                    </div>
-                                </div>
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <td class="muted">Citas pendientes</td>
+                                            <td class="fw-bold text-end" th:text="${citasPendientes}"></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="muted">Adopciones pendientes</td>
+                                            <td class="fw-bold text-end" th:text="${solicitudesPendientes}"></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="muted">Mascotas</td>
+                                            <td class="fw-bold text-end" th:text="${totalMascotas}"></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="muted">Servicios</td>
+                                            <td class="fw-bold text-end" th:text="${totalServicios}"></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="muted">Pagos</td>
+                                            <td class="fw-bold text-end" th:text="${totalPagos}"></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="muted" style="border-bottom:none">Atenciones</td>
+                                            <td class="fw-bold text-end" style="border-bottom:none" th:text="${totalAtenciones}"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
                 </section>
 
+                <!-- ═══════════ CITAS ═══════════ -->
                 <section class="section-block" id="citas">
                     <div class="section-box">
-                        <div class="d-flex flex-column flex-lg-row justify-content-between gap-3 mb-3">
-                            <div>
-                                <div class="section-title mb-1">Citas</div>
-                                <div class="muted small fw-bold">Registros creados desde el formulario de servicios.</div>
-                            </div>
+                        <div class="d-flex flex-column flex-lg-row justify-content-between gap-2 mb-2">
+                            <div class="section-title mb-0">Citas</div>
                             <div class="d-flex gap-2 align-items-center">
                                 <input class="form-control search-input" type="search" placeholder="Buscar cita..."
                                     data-table-filter="tabla-citas">
-                                <button type="button" class="btn btn-sm btn-warning fw-bold"
+                                <button type="button" class="btn-uv-new"
                                     data-admin-reset="formCita" data-bs-toggle="modal" data-bs-target="#modalCita">
                                     <i class="bi bi-plus-lg"></i> Nueva
                                 </button>
@@ -584,17 +624,17 @@
                                 <tbody>
                                     <tr th:each="cita : ${citas}">
                                         <td>
-                                            <div class="fw-bold" th:text="${cita.usuario.nombre}">Cliente</div>
-                                            <div class="muted small" th:text="${cita.usuario.correo}">correo</div>
+                                            <div class="fw-bold" th:text="${cita.usuario.nombre}"></div>
+                                            <div class="muted small" th:text="${cita.usuario.correo}"></div>
                                         </td>
-                                        <td th:text="${cita.mascota.nombre}">Mascota</td>
-                                        <td th:text="${cita.servicio.nombre}">Servicio</td>
-                                        <td th:text="${#temporals.format(cita.fecha, 'dd/MM/yyyy')}">10/06/2026</td>
-                                        <td th:text="${#temporals.format(cita.hora, 'HH:mm')}">10:00</td>
+                                        <td th:text="${cita.mascota.nombre}"></td>
+                                        <td th:text="${cita.servicio.nombre}"></td>
+                                        <td th:text="${#temporals.format(cita.fecha, 'dd/MM/yyyy')}"></td>
+                                        <td th:text="${#temporals.format(cita.hora, 'HH:mm')}"></td>
                                         <td>
                                             <span class="badge-estado"
                                                 th:classappend="${' estado-' + #strings.toLowerCase(cita.estado.nombre)}"
-                                                th:text="${cita.estado.nombre}">PENDIENTE</span>
+                                                th:text="${cita.estado.nombre}"></span>
                                         </td>
                                         <td>
                                             <div class="crud-actions">
@@ -627,17 +667,15 @@
                     </div>
                 </section>
 
+                <!-- ═══════════ ADOPCIONES ═══════════ -->
                 <section class="section-block" id="adopciones">
                     <div class="section-box">
-                        <div class="d-flex flex-column flex-lg-row justify-content-between gap-3 mb-3">
-                            <div>
-                                <div class="section-title mb-1">Solicitudes de adopcion</div>
-                                <div class="muted small fw-bold">Solicitudes registradas desde la vista de adopcion.</div>
-                            </div>
+                        <div class="d-flex flex-column flex-lg-row justify-content-between gap-2 mb-2">
+                            <div class="section-title mb-0">Solicitudes de adopcion</div>
                             <div class="d-flex gap-2 align-items-center">
                                 <input class="form-control search-input" type="search" placeholder="Buscar adopcion..."
                                     data-table-filter="tabla-adopciones">
-                                <button type="button" class="btn btn-sm btn-warning fw-bold"
+                                <button type="button" class="btn-uv-new"
                                     data-admin-reset="formSolicitud" data-bs-toggle="modal"
                                     data-bs-target="#modalSolicitud">
                                     <i class="bi bi-plus-lg"></i> Nueva
@@ -663,17 +701,17 @@
                                 <tbody>
                                     <tr th:each="solicitud : ${solicitudes}">
                                         <td>
-                                            <div class="fw-bold" th:text="${solicitud.usuario.nombre}">Usuario</div>
-                                            <div class="muted small" th:text="${solicitud.usuario.correo}">correo</div>
+                                            <div class="fw-bold" th:text="${solicitud.usuario.nombre}"></div>
+                                            <div class="muted small" th:text="${solicitud.usuario.correo}"></div>
                                         </td>
-                                        <td th:text="${solicitud.mascota.nombre}">Mascota</td>
-                                        <td th:text="${solicitud.distrito ?: '-'}">Distrito</td>
-                                        <td th:text="${solicitud.experienciaMascotas ?: '-'}">Experiencia</td>
-                                        <td th:text="${#temporals.format(solicitud.fechaEnvio, 'dd/MM/yyyy HH:mm')}">10/06/2026</td>
+                                        <td th:text="${solicitud.mascota.nombre}"></td>
+                                        <td th:text="${solicitud.distrito ?: '-'}"></td>
+                                        <td th:text="${solicitud.experienciaMascotas ?: '-'}"></td>
+                                        <td th:text="${#temporals.format(solicitud.fechaEnvio, 'dd/MM/yyyy HH:mm')}"></td>
                                         <td>
                                             <span class="badge-estado"
                                                 th:classappend="${' estado-' + #strings.toLowerCase(solicitud.estado.nombre)}"
-                                                th:text="${solicitud.estado.nombre}">PENDIENTE</span>
+                                                th:text="${solicitud.estado.nombre}"></span>
                                         </td>
                                         <td>
                                             <div class="crud-actions">
@@ -704,25 +742,23 @@
                     </div>
                 </section>
 
+                <!-- ═══════════ MASCOTAS ═══════════ -->
                 <section class="section-block" id="mascotas">
                     <div class="section-box">
-                        <div class="d-flex flex-column flex-lg-row justify-content-between gap-3 mb-3">
-                            <div>
-                                <div class="section-title mb-1">Mascotas</div>
-                                <div class="muted small fw-bold">Mascotas registradas y publicadas en la aplicacion.</div>
-                            </div>
+                        <div class="d-flex flex-column flex-lg-row justify-content-between gap-2 mb-2">
+                            <div class="section-title mb-0">Mascotas</div>
                             <div class="d-flex gap-2 align-items-center">
                                 <input class="form-control search-input" type="search" placeholder="Buscar mascota..."
                                     data-table-filter="tabla-mascotas">
-                                <button type="button" class="btn btn-sm btn-warning fw-bold"
+                                <button type="button" class="btn-uv-new"
                                     data-admin-reset="formMascota" data-bs-toggle="modal"
                                     data-bs-target="#modalMascota">
                                     <i class="bi bi-plus-lg"></i> Nueva
                                 </button>
                             </div>
                         </div>
-                        <div class="empty-state" th:if="${#lists.isEmpty(mascotas)}">No hay mascotas registradas.</div>
-                        <div class="table-responsive" th:if="${!#lists.isEmpty(mascotas)}">
+                        <div class="empty-state" th:if="${#lists.isEmpty(mascotasAdopcion)}">No hay mascotas registradas.</div>
+                        <div class="table-responsive" th:if="${!#lists.isEmpty(mascotasAdopcion)}">
                             <table class="table" id="tabla-mascotas">
                                 <thead>
                                     <tr>
@@ -736,17 +772,17 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr th:each="mascota : ${mascotas}">
-                                        <td class="fw-bold" th:text="${mascota.nombre}">Mascota</td>
-                                        <td th:text="${mascota.tipo ?: '-'}">Tipo</td>
-                                        <td th:text="${mascota.raza ?: '-'}">Raza</td>
-                                        <td th:text="${mascota.usuario != null ? mascota.usuario.nombre : 'Disponible'}">Dueno</td>
+                                    <tr th:each="mascota : ${mascotasAdopcion}">
+                                        <td class="fw-bold" th:text="${mascota.nombre}"></td>
+                                        <td th:text="${mascota.tipo ?: '-'}"></td>
+                                        <td th:text="${mascota.raza ?: '-'}"></td>
+                                        <td th:text="${mascota.usuario != null ? mascota.usuario.nombre : 'Disponible'}"></td>
                                         <td>
                                             <span class="badge-estado"
                                                 th:classappend="${' estado-' + #strings.toLowerCase(mascota.estado.nombre)}"
-                                                th:text="${mascota.estado.nombre}">DISPONIBLE</span>
+                                                th:text="${mascota.estado.nombre}"></span>
                                         </td>
-                                        <td th:text="${mascota.prioridad.nombre}">NORMAL</td>
+                                        <td th:text="${mascota.prioridad.nombre}"></td>
                                         <td>
                                             <div class="crud-actions">
                                                 <button type="button" class="btn btn-outline-primary btn-sm"
@@ -782,17 +818,15 @@
                     </div>
                 </section>
 
+                <!-- ═══════════ SERVICIOS ═══════════ -->
                 <section class="section-block" id="servicios-admin">
                     <div class="section-box">
-                        <div class="d-flex flex-column flex-lg-row justify-content-between gap-3 mb-3">
-                            <div>
-                                <div class="section-title mb-1">Servicios</div>
-                                <div class="muted small fw-bold">Catalogo precargado desde MySQL.</div>
-                            </div>
+                        <div class="d-flex flex-column flex-lg-row justify-content-between gap-2 mb-2">
+                            <div class="section-title mb-0">Servicios</div>
                             <div class="d-flex gap-2 align-items-center">
                                 <input class="form-control search-input" type="search" placeholder="Buscar servicio..."
                                     data-table-filter="tabla-servicios">
-                                <button type="button" class="btn btn-sm btn-warning fw-bold"
+                                <button type="button" class="btn-uv-new"
                                     data-admin-reset="formServicio" data-bs-toggle="modal"
                                     data-bs-target="#modalServicio">
                                     <i class="bi bi-plus-lg"></i> Nuevo
@@ -815,15 +849,15 @@
                                 <tbody>
                                     <tr th:each="servicio : ${servicios}">
                                         <td>
-                                            <div class="fw-bold" th:text="${servicio.nombre}">Servicio</div>
-                                            <div class="muted small" th:text="${servicio.descripcion ?: '-'}">Descripcion</div>
+                                            <div class="fw-bold" th:text="${servicio.nombre}"></div>
+                                            <div class="muted small" th:text="${servicio.descripcion ?: '-'}"></div>
                                         </td>
-                                        <td th:text="${servicio.categoria.nombre}">Categoria</td>
-                                        <td th:text="${servicio.duracionEstimada ?: '-'}">1 hora</td>
-                                        <td th:text="${'S/ ' + servicio.precio}">S/ 0.00</td>
+                                        <td th:text="${servicio.categoria.nombre}"></td>
+                                        <td th:text="${servicio.duracionEstimada ?: '-'}"></td>
+                                        <td th:text="${'S/ ' + servicio.precio}"></td>
                                         <td>
                                             <span class="badge-estado estado-confirmada"
-                                                th:text="${servicio.activo ? 'ACTIVO' : 'INACTIVO'}">ACTIVO</span>
+                                                th:text="${servicio.activo ? 'ACTIVO' : 'INACTIVO'}"></span>
                                         </td>
                                         <td>
                                             <div class="crud-actions">
@@ -854,17 +888,15 @@
                     </div>
                 </section>
 
+                <!-- ═══════════ CLIENTES ═══════════ -->
                 <section class="section-block" id="clientes">
                     <div class="section-box">
-                        <div class="d-flex flex-column flex-lg-row justify-content-between gap-3 mb-3">
-                            <div>
-                                <div class="section-title mb-1">Usuarios y clientes</div>
-                                <div class="muted small fw-bold">Usuarios registrados en la tabla usuarios.</div>
-                            </div>
+                        <div class="d-flex flex-column flex-lg-row justify-content-between gap-2 mb-2">
+                            <div class="section-title mb-0">Usuarios</div>
                             <div class="d-flex gap-2 align-items-center">
                                 <input class="form-control search-input" type="search" placeholder="Buscar usuario..."
                                     data-table-filter="tabla-clientes">
-                                <button type="button" class="btn btn-sm btn-warning fw-bold"
+                                <button type="button" class="btn-uv-new"
                                     data-admin-reset="formUsuario" data-bs-toggle="modal"
                                     data-bs-target="#modalUsuario">
                                     <i class="bi bi-plus-lg"></i> Nuevo
@@ -886,13 +918,13 @@
                                 </thead>
                                 <tbody>
                                     <tr th:each="usuario : ${usuarios}">
-                                        <td class="fw-bold" th:text="${usuario.nombre}">Usuario</td>
-                                        <td th:text="${usuario.correo}">correo</td>
-                                        <td th:text="${usuario.telefono ?: '-'}">Telefono</td>
-                                        <td th:text="${usuario.dni ?: '-'}">DNI</td>
+                                        <td class="fw-bold" th:text="${usuario.nombre}"></td>
+                                        <td th:text="${usuario.correo}"></td>
+                                        <td th:text="${usuario.telefono ?: '-'}"></td>
+                                        <td th:text="${usuario.dni ?: '-'}"></td>
                                         <td>
                                             <span class="badge-estado estado-registrada"
-                                                th:text="${usuario.rol.nombre}">CLIENTE</span>
+                                                th:text="${usuario.rol.nombre}"></span>
                                         </td>
                                         <td>
                                             <div class="crud-actions">
@@ -924,17 +956,15 @@
                     </div>
                 </section>
 
+                <!-- ═══════════ PAGOS ═══════════ -->
                 <section class="section-block" id="pagos">
                     <div class="section-box">
-                        <div class="d-flex flex-column flex-lg-row justify-content-between gap-3 mb-3">
-                            <div>
-                                <div class="section-title mb-1">Pagos</div>
-                                <div class="muted small fw-bold">Pagos asociados a citas.</div>
-                            </div>
+                        <div class="d-flex flex-column flex-lg-row justify-content-between gap-2 mb-2">
+                            <div class="section-title mb-0">Pagos</div>
                             <div class="d-flex gap-2 align-items-center">
                                 <input class="form-control search-input" type="search" placeholder="Buscar pago..."
                                     data-table-filter="tabla-pagos">
-                                <button type="button" class="btn btn-sm btn-warning fw-bold"
+                                <button type="button" class="btn-uv-new"
                                     data-admin-reset="formPago" data-bs-toggle="modal" data-bs-target="#modalPago">
                                     <i class="bi bi-plus-lg"></i> Nuevo
                                 </button>
@@ -956,15 +986,15 @@
                                 </thead>
                                 <tbody>
                                     <tr th:each="pago : ${pagos}">
-                                        <td th:text="${pago.cita.usuario.nombre}">Cliente</td>
-                                        <td th:text="${pago.cita.servicio.nombre + ' / ' + pago.cita.mascota.nombre}">Cita</td>
-                                        <td th:text="${pago.metodoPago.nombre}">Metodo</td>
-                                        <td th:text="${'S/ ' + pago.monto}">S/ 0.00</td>
-                                        <td th:text="${pago.fechaPago != null ? #temporals.format(pago.fechaPago, 'dd/MM/yyyy HH:mm') : '-'}">-</td>
+                                        <td th:text="${pago.cita.usuario.nombre}"></td>
+                                        <td th:text="${pago.cita.servicio.nombre + ' / ' + pago.cita.mascota.nombre}"></td>
+                                        <td th:text="${pago.metodoPago.nombre}"></td>
+                                        <td th:text="${'S/ ' + pago.monto}"></td>
+                                        <td th:text="${pago.fechaPago != null ? #temporals.format(pago.fechaPago, 'dd/MM/yyyy HH:mm') : '-'}"></td>
                                         <td>
                                             <span class="badge-estado"
                                                 th:classappend="${' estado-' + #strings.toLowerCase(pago.estadoPago.nombre)}"
-                                                th:text="${pago.estadoPago.nombre}">PENDIENTE</span>
+                                                th:text="${pago.estadoPago.nombre}"></span>
                                         </td>
                                         <td>
                                             <div class="crud-actions">
@@ -995,17 +1025,15 @@
                     </div>
                 </section>
 
+                <!-- ═══════════ HISTORIAL MÉDICO ═══════════ -->
                 <section class="section-block" id="atenciones">
                     <div class="section-box">
-                        <div class="d-flex flex-column flex-lg-row justify-content-between gap-3 mb-3">
-                            <div>
-                                <div class="section-title mb-1">Atenciones / historial medico</div>
-                                <div class="muted small fw-bold">Diagnostico y tratamiento generados desde citas atendidas.</div>
-                            </div>
+                        <div class="d-flex flex-column flex-lg-row justify-content-between gap-2 mb-2">
+                            <div class="section-title mb-0">Historial M&#233;dico</div>
                             <div class="d-flex gap-2 align-items-center">
                                 <input class="form-control search-input" type="search" placeholder="Buscar atencion..."
                                     data-table-filter="tabla-atenciones">
-                                <button type="button" class="btn btn-sm btn-warning fw-bold"
+                                <button type="button" class="btn-uv-new"
                                     data-admin-reset="formAtencion" data-bs-toggle="modal"
                                     data-bs-target="#modalAtencion">
                                     <i class="bi bi-plus-lg"></i> Nueva
@@ -1028,13 +1056,13 @@
                                 <tbody>
                                     <tr th:each="atencion : ${atenciones}">
                                         <td>
-                                            <div class="fw-bold" th:text="${atencion.cita.mascota.nombre}">Mascota</div>
-                                            <div class="muted small" th:text="${atencion.cita.usuario.nombre}">Cliente</div>
+                                            <div class="fw-bold" th:text="${atencion.cita.mascota.nombre}"></div>
+                                            <div class="muted small" th:text="${atencion.cita.usuario.nombre}"></div>
                                         </td>
-                                        <td th:text="${atencion.cita.servicio.nombre}">Servicio</td>
-                                        <td th:text="${atencion.diagnostico ?: '-'}">Diagnostico</td>
-                                        <td th:text="${atencion.tratamiento ?: '-'}">Tratamiento</td>
-                                        <td th:text="${#temporals.format(atencion.fechaRegistro, 'dd/MM/yyyy HH:mm')}">10/06/2026</td>
+                                        <td th:text="${atencion.cita.servicio.nombre}"></td>
+                                        <td th:text="${atencion.diagnostico ?: '-'}"></td>
+                                        <td th:text="${atencion.tratamiento ?: '-'}"></td>
+                                        <td th:text="${#temporals.format(atencion.fechaRegistro, 'dd/MM/yyyy HH:mm')}"></td>
                                         <td>
                                             <div class="crud-actions">
                                                 <button type="button" class="btn btn-outline-primary btn-sm"
@@ -1066,6 +1094,8 @@
             </div>
         </main>
     </div>
+
+    <!-- ═══════════ MODALES ═══════════ -->
 
     <div class="modal fade" id="modalCita" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered">
@@ -1126,7 +1156,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-warning fw-bold">Guardar</button>
+                        <button type="submit" class="btn-uv-new">Guardar</button>
                     </div>
                 </form>
             </div>
@@ -1184,7 +1214,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-warning fw-bold">Guardar</button>
+                        <button type="submit" class="btn-uv-new">Guardar</button>
                     </div>
                 </form>
             </div>
@@ -1266,7 +1296,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-warning fw-bold">Guardar</button>
+                        <button type="submit" class="btn-uv-new">Guardar</button>
                     </div>
                 </form>
             </div>
@@ -1312,7 +1342,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-warning fw-bold">Guardar</button>
+                        <button type="submit" class="btn-uv-new">Guardar</button>
                     </div>
                 </form>
             </div>
@@ -1372,7 +1402,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-warning fw-bold">Guardar</button>
+                        <button type="submit" class="btn-uv-new">Guardar</button>
                     </div>
                 </form>
             </div>
@@ -1428,7 +1458,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-warning fw-bold">Guardar</button>
+                        <button type="submit" class="btn-uv-new">Guardar</button>
                     </div>
                 </form>
             </div>
@@ -1440,7 +1470,7 @@
             <div class="modal-content">
                 <form id="formAtencion" th:action="@{/admin/atenciones/guardar}" method="post">
                     <div class="modal-header">
-                        <h5 class="modal-title">Gestionar atencion</h5>
+                        <h5 class="modal-title">Gestionar historial m&#233;dico</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
                     </div>
                     <div class="modal-body">
@@ -1476,7 +1506,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-warning fw-bold">Guardar</button>
+                        <button type="submit" class="btn-uv-new">Guardar</button>
                     </div>
                 </form>
             </div>
@@ -1486,41 +1516,19 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         const normalizarValorTemporal = (field, value) => {
-            if (!value) {
-                return '';
-            }
-
-            if (field.type === 'date') {
-                return value.slice(0, 10);
-            }
-
-            if (field.type === 'time') {
-                return value.slice(0, 5);
-            }
-
-            if (field.type === 'datetime-local') {
-                return value.replace(' ', 'T').split('.')[0].slice(0, 16);
-            }
-
+            if (!value) return '';
+            if (field.type === 'date') return value.slice(0, 10);
+            if (field.type === 'time') return value.slice(0, 5);
+            if (field.type === 'datetime-local') return value.replace(' ', 'T').split('.')[0].slice(0, 16);
             return value;
         };
 
         const limpiarFormularioAdmin = (form) => {
-            if (!form) {
-                return;
-            }
-
+            if (!form) return;
             form.reset();
             Array.from(form.elements).forEach((field) => {
-                if (!field.name || field.type === 'button' || field.type === 'submit') {
-                    return;
-                }
-
-                if (field.tagName === 'SELECT') {
-                    field.value = '';
-                    return;
-                }
-
+                if (!field.name || field.type === 'button' || field.type === 'submit') return;
+                if (field.tagName === 'SELECT') { field.value = ''; return; }
                 field.value = '';
             });
         };
@@ -1535,16 +1543,9 @@
             button.addEventListener('click', () => {
                 const form = document.getElementById(button.dataset.adminFill);
                 limpiarFormularioAdmin(form);
-
-                if (!form) {
-                    return;
-                }
-
+                if (!form) return;
                 Array.from(form.elements).forEach((field) => {
-                    if (!field.name || !Object.prototype.hasOwnProperty.call(button.dataset, field.name)) {
-                        return;
-                    }
-
+                    if (!field.name || !Object.prototype.hasOwnProperty.call(button.dataset, field.name)) return;
                     field.value = normalizarValorTemporal(field, button.dataset[field.name]);
                 });
             });
@@ -1552,9 +1553,7 @@
 
         document.querySelectorAll('[data-confirm-delete]').forEach((button) => {
             button.addEventListener('click', (event) => {
-                if (!confirm(button.dataset.confirmDelete)) {
-                    event.preventDefault();
-                }
+                if (!confirm(button.dataset.confirmDelete)) event.preventDefault();
             });
         });
 
@@ -1567,14 +1566,9 @@
 
         document.querySelectorAll('[data-table-filter]').forEach((input) => {
             const table = document.getElementById(input.dataset.tableFilter);
-
-            if (!table) {
-                return;
-            }
-
+            if (!table) return;
             input.addEventListener('input', () => {
                 const query = input.value.trim().toLowerCase();
-
                 table.querySelectorAll('tbody tr').forEach((row) => {
                     row.classList.toggle('d-none', !row.textContent.toLowerCase().includes(query));
                 });
