@@ -7,6 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @AutoConfigureMockMvc
@@ -21,8 +22,16 @@ class VeterinariaApplicationTests {
     }
 
     @Test
-    void adminDashboardRenders() throws Exception {
+    void adminDashboardRequiresAdminSession() throws Exception {
         mockMvc.perform(get("/admin"))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrl("/"));
+    }
+
+    @Test
+    void adminDashboardRendersWithAdminSession() throws Exception {
+        mockMvc.perform(get("/admin")
+                .sessionAttr("usuarioRol", "ADMIN"))
                 .andExpect(status().isOk());
     }
 
